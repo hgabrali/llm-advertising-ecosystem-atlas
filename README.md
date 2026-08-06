@@ -1,3 +1,5 @@
+![The LLM Advertising Ecosystem — cover banner](./llm-advertising-ecosystem-cover.png)
+
 # The LLM Advertising Ecosystem: An Atlas
 
 *An independent research report mapping how advertising is emerging inside Large Language Models (LLMs) and AI answer engines. It distinguishes the roles of media agencies, AdTech companies, and the LLM platforms themselves, and explains the technical and economic frameworks that connect them.*
