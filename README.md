@@ -151,12 +151,14 @@ To let different AI agents communicate across fragmented tech stacks without bes
 - **A2A (agent-to-agent) communication** — patterns for a buyer's agent and a seller's agent to negotiate directly, referenced within the IAB Tech Lab agentic work [1].
 
 **AAMP: the governance & policy framework (IAB Tech Lab)**
-AAMP (Agentic Advertising Management Protocols) does not replace the existing programmatic stack; it "agentifies" globally adopted standards (OpenRTB, AdCOM, OpenDirect) so agents operate with repeatable, deterministic accuracy [1][2][6]. Its foundational components include:
-- **Agentic Real-Time Framework (ARTF):** the high-performance control plane defining how autonomous agents safely execute bidding logic inside real-time, containerized bidding environments — reported to cut transaction latency by roughly 80-90% [1][6].
-- **Agentic Audiences (User Context Protocol, donated by LiveRamp):** defines how agents securely exchange real-time consumer intent and behavioral signals as high-dimensional vector embeddings (numerical arrays of ~256-1024 dimensions). Encoding signals mathematically preserves privacy and removes the need to sync massive user-level datasets [1][6].
-- **Buyer & Seller Agent SDKs:** production-ready SDKs published on GitHub, giving developers a standardized, executable baseline for multi-seller discovery, automated pricing negotiation, and transaction state management [1][6].
-- **Agentic Mobile & CoMP:** standardizes mobile app mediation and yield testing (via the CloudX-donated Agentic Mobile spec), while the Content Monetization Protocols (CoMP) let publishers declare machine-readable usage rights, manage AI bot crawling, and verify monetization for their content [1][6].
-- **AI Transparency & Disclosure Framework (launched Jan 2026):** a risk-based compliance model requiring advertisers to visibly disclose generative AI use (via consumer-facing labels and cryptographically signed C2PA metadata) when AI materially alters realism, synthetic voices, or digital twins in ways that could mislead consumers — while exempting minor, routine post-production edits [1][2].
+AAMP (Agentic Advertising Management Protocols) is IAB Tech Lab's umbrella initiative for agentic advertising, powered by the same standards that run the ecosystem today. Per its official page (last updated Apr 23, 2026), AAMP is built on **three complementary pillars** — *Agentic Foundations* (high-performance delivery, execution, and control), *Agentic Protocols* (schemas, tools, and reference implementations for how buyer and seller agents discover and transact), and *Trust and Transparency* (a neutral Agent Registry) [28]. It builds on existing Tech Lab standards (OpenRTB, AdCOM, OpenDirect, Deals API) rather than replacing them, and treats Anthropic's MCP and Google's Agent-to-Agent as key agentic protocols [28]. Its components include:
+- **ARTF (Agentic Real Time Framework):** the Agentic Foundations pillar. ARTF defines container-based agent services deployed into a host platform's infrastructure to delegate bidstream processing "with minimal cost, latency and operational impacts," enabling *sub-millisecond* real-time bidding operations. The spec was in public comment until Jan 15, 2026, with v2.0 underway [29]. *(Note: earlier drafts of this atlas cited an "80-90% latency reduction"; IAB Tech Lab's spec states "minimal latency" and "sub-millisecond" RTB rather than a specific percentage, so that figure has been removed pending a primary source.)*
+- **Agentic Protocols & object models:** reference schemas for *Agentic Direct* (built on OpenDirect), *Agentic Deals* (the new Deals API for PMPs), and *Agentic Open Bidding* (OpenRTB), plus *Agentic Ad Objects* (AdCOM) [28].
+- **Buyer & Seller Agent SDKs:** production-ready reference SDKs published on GitHub, giving developers an executable baseline for multi-seller discovery, pricing negotiation, and transaction state management [30][31].
+- **Agentic Audiences (formerly User Context Protocol, UCP):** donated by LiveRamp (Nov 3, 2025) and launched by IAB Tech Lab (Jan 28, 2026). It defines how agents exchange audience signals as *embeddings* — compact learned vector representations that encode identity/intent at machine speed while preserving privacy and removing the need to sync large user-level datasets [32][33].
+- **Agent Registry:** the Trust and Transparency pillar; a neutral registry for agent accountability, available via the Tech Lab Tools Portal [28].
+- **Agentic Mobile & CoMP:** work on mobile app mediation/yield, plus the *LLM Content Monetization Protocols (CoMP)* working group, which lets publishers declare machine-readable usage rights and manage AI-bot access to their content [34]. *(Component names verified; specific mobile-spec attribution should be confirmed against primary sources.)*
+- **AI transparency / disclosure:** industry work on labeling AI-altered creative (e.g., consumer labels and C2PA-signed provenance metadata) is developing alongside AAMP. *(This atlas previously attributed a specific "AI Transparency & Disclosure Framework, launched Jan 2026" to AAMP; that specific framing was not confirmed on the AAMP page and should be verified before citing.)*
 
 ### 5.6 Decisioning: When and What to Show
 Placement becomes a ranking problem with an extra dimension. Beyond "which ad wins the auction," the system estimates the *cost to trust and usefulness* of interrupting, and may decline to show anything. Academic work explores auction design, disclosure, ad timing, and how ad insertion affects answer quality and user welfare — including generative-auction mechanisms and optimal-stopping approaches to *when* to insert an ad [22][25][26][27].
@@ -256,10 +258,10 @@ When evaluating case studies, separate three things: (1) *engagement* (did users
 - **MCP** — Model Context Protocol; open standard connecting LLMs to external tools/data [3][4].
 - **MCP gateway** — an MCP server that exposes a programmatic ad platform's stack to external AI agents (e.g., Adform).
 - **AdCP** — Ad Context Protocol; open standard (built on MCP) for AI agents to plan, buy, and sell ads [5].
-- **AAMP** — Agentic Advertising Management Protocols; IAB Tech Lab's umbrella framework agentifying OpenRTB/AdCOM/OpenDirect [6].
-- **ARTF** — Agentic Real-Time Framework; AAMP's low-latency bidding control plane.
-- **Agentic Audiences (UCP)** — LiveRamp-donated User Context Protocol; privacy-safe signal exchange via vector embeddings.
-- **CoMP** — Content Monetization Protocols; machine-readable publisher usage rights and AI-crawl controls.
+- **AAMP** — Agentic Advertising Management Protocols; IAB Tech Lab's umbrella initiative built on three pillars (Foundations, Protocols, Trust) atop OpenRTB/AdCOM/OpenDirect/Deals API [6][28].
+- **ARTF** — Agentic Real Time Framework; AAMP's container-based, sub-millisecond bidding foundation [29].
+- **Agentic Audiences (fka UCP)** — LiveRamp-donated (Nov 2025) standard for privacy-safe audience signal exchange via vector embeddings [32][33].
+- **CoMP** — LLM Content Monetization Protocols; machine-readable publisher usage rights and AI-crawl controls [34].
 - **C2PA** — content provenance standard used for cryptographically signed AI-disclosure metadata.
 - **GEO / AEO** — Generative Engine Optimization / Answer Engine Optimization; being cited/sponsored within AI discovery.
 - **Buyer agent / Seller agent** — autonomous agents representing the demand and supply sides in a transaction.
@@ -325,6 +327,17 @@ Open an issue or pull request with proposed changes. Please cite sources and not
 25. "Generative Auction towards LLM-Native Advertising" - arXiv (Dec 11, 2025). https://arxiv.org/
 26. "LLM-OSDA: An Optimal-Stopping Dynamic Auction..." - arXiv (2026). https://arxiv.org/
 27. Feizi, S. et al. - "Online Advertisements with LLMs: Opportunities and Challenges" (2023). https://arxiv.org/
+
+**IAB Tech Lab AAMP (verified primary sources)**
+
+28. IAB Tech Lab - "AAMP (Agentic Advertising Management Protocols)" (last updated Apr 23, 2026; three pillars, components, GitHub hub). https://iabtechlab.com/standards/aamp-agentic-advertising-management-protocols/
+29. IAB Tech Lab - "ARTF (Agentic Real Time Framework)" (last updated Feb 18, 2026; containers, sub-millisecond RTB, public comment to Jan 15, 2026). https://iabtechlab.com/standards/artf/
+30. IAB Tech Lab - "Buyer Agent SDK" (GitHub). https://github.com/IABTechLab/buyer-agent
+31. IAB Tech Lab - "Seller Agent SDK" (GitHub). https://github.com/IABTechLab/seller-agent
+32. IAB Tech Lab - "Agentic Audiences" (formerly UCP; LiveRamp donation, embeddings). https://iabtechlab.com/standards/agentic-audiences/
+33. IAB Tech Lab - "Agentic Audiences" (GitHub; embeddings/vector representations). https://github.com/IABTechLab/agentic-audiences
+34. IAB Tech Lab - "Launching the LLM Content Monetization Protocols (CoMP) Working Group." https://iabtechlab.com/standards/aamp-agentic-advertising-management-protocols/
+35. IAB Tech Lab - "AAMP GitHub Framework Hub" (links to all repos). https://github.com/IABTechLab/AAMP
 
 ---
 
