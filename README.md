@@ -231,6 +231,31 @@ Once buyer and seller agents agree on terms, the ad is delivered natively as an 
 - **Perplexity AI** — reported "sponsored follow-up questions" placed in the related-questions area, bought on a premium direct-CPM basis. *(Verify current format against primary sources.)*
 - **Microsoft Copilot** — reported rich "showroom"-style ads displaying interactive product features near conversational answers. *(Verify current format against primary sources.)*
 
+### 8.1.1 Buying Methods & Eligibility: Google AI Overviews vs. ChatGPT
+The two most-discussed conversational ad surfaces take opposite approaches to how inventory is bought and who is eligible to appear. Google folds AI-answer placements into its *existing* automated search/shopping machinery (no direct control), while OpenAI has stood up a *dedicated self-serve* buying channel. *(Vendor-reported specifics below move quickly — verify thresholds, geographies, and requirements against each platform's primary documentation before acting.)*
+
+**How placements are bought**
+
+| Dimension | Google AI Overviews Ads | ChatGPT Ads (OpenAI) |
+| --- | --- | --- |
+| Buying model | *Indirect only.* Advertisers cannot select, bid on, target, or opt out of AI Overview slots specifically. | *Direct.* Dedicated self-serve Ads Manager (ads.openai.com). |
+| Inventory path | Bought by purchasing standard Google search/shopping inventory via Performance Max, AI Max for Search, or Broad Match; Google's system dynamically decides whether existing Text/Shopping ads render above, below, or inside an AI Overview based on query intent and conversational relevance. | Campaigns created and managed directly in the self-serve console. |
+| Onboarding | Uses existing Google Ads / Merchant Center account. | Apply for an account with business name, EIN, and business address; approvals reported at ~72 hours. |
+| Pricing basis | Inherits the underlying campaign type's bidding (Search/Shopping/PMax). | CPC or CPM, depending on whether the advertiser picks a Clicks or Reach objective. |
+| Minimum spend | Standard Google Ads minimums. | No minimum spend reported for U.S. businesses; the prior $50,000 threshold was dropped with the self-serve transition. |
+
+**Who and what is eligible**
+
+| Dimension | Google AI Overviews Ads | ChatGPT Ads (OpenAI) |
+| --- | --- | --- |
+| Eligible inventory / assets | Only Text or Shopping ads from existing Search, Shopping, and Performance Max campaigns. E-commerce placement needs an active, high-quality Merchant Center feed with valid GTINs. | E-commerce merchants submit catalogs via OpenAI's Agentic Commerce Protocol (ACP) or auto-syndicate through Shopify Agentic Storefronts. |
+| Audience | Searchers in select English-language markets. | Free and Go tier users over 18; Free users may opt out of ads in exchange for tighter daily message limits. |
+| Targeting | Keyword/query-driven (inherited from the source campaign). | Broad, intent-based; custom email lists supported for ICP targeting (reported minimum match ~25,000 users). |
+| Geography / language | English only; live in select countries incl. U.S., UK, Australia, Canada, India, Singapore. | Reported in the U.S., UK, Japan, and South Korea. |
+| Vertical restrictions | Sensitive categories excluded (e.g., alcohol, adult, gambling, finance, healthcare, politics). | Standard advertising policy review at account approval. |
+
+The contrast is structural: Google treats the AI Overview as one more *auto-placed surface* inside an existing black-box campaign, so advertisers optimize feeds and campaign inputs and let the system decide; OpenAI exposes AI-chat inventory as a *first-class, directly buyable channel* with its own objectives, targeting, and commerce protocol [9][10][11][12][14].
+
 ### 8.2 Agentic Media Buys
 Cross-vendor agent transactions using AdCP, e.g. the Magnite/MiQ/Scope3 test buy, and DSP agent interoperability such as Yahoo DSP with MiQ Sigma [19][20][21].
 
