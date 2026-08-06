@@ -60,15 +60,29 @@ The demand origin. They bring budgets, objectives, creative assets, and first-pa
 Historically the primary executors of media plans. In an LLM world their tactical execution role is partly automated, but their strategic role — audience strategy, brand safety, measurement design, cross-channel orchestration, and accountability to the CMO — arguably grows. Rather than being disintermediated, the large holding groups are repositioning as owners of the AI *operating system* a brand uses, building proprietary platforms (see Section 6) precisely to avoid becoming a thin layer on top of someone else's tech [15][16][17].
 
 ### 3.3 AdTech: DSPs, SSPs, and New Intermediaries
-- **DSPs (Demand-Side Platforms)** buy inventory on behalf of advertisers. Incumbents are adapting by adding AI planning copilots and "agent" interfaces that can be instructed in natural language; for example, Yahoo's DSP has publicized agentic-AI capabilities and interoperability with partner agents [20][21].
-- **SSPs (Supply-Side Platforms)** represent the sell side. Their LLM analogue is any layer that packages, prices, and exposes model "ad opportunities" to buyers; SSPs such as Magnite and PubMatic have participated in early agentic test buys [19].
-- **New specialized intermediaries** build the agents themselves. Scope3, for instance, positions an "agentic media platform" where buying and selling agents act on behalf of brands and publishers [18][8]. These sit between classic DSP/SSP roles and the agentic protocols described in Section 5.
+The programmatic middle layer is adapting to agentic buying. Three roles matter:
+
+| Role | Function | LLM-era adaptation | Examples |
+| --- | --- | --- | --- |
+| **DSP** (Demand-Side Platform) | Buys inventory on behalf of advertisers. | Adding AI planning copilots and natural-language "agent" interfaces; interoperating with partner agents. | Yahoo DSP (agentic-AI capabilities) [20][21] |
+| **SSP** (Supply-Side Platform) | Represents the sell side. | The analogue is any layer that packages, prices, and exposes model "ad opportunities" to buyers. | Magnite, PubMatic (early agentic test buys) [19] |
+| **New specialized intermediaries** | Build the agents themselves. | Position "agentic media platforms" where buyer/seller agents act for brands and publishers; sit between classic DSP/SSP roles and the agentic protocols in Section 5. | Scope3 [18][8] |
 
 ### 3.4 LLM Platforms (OpenAI, Google, and others)
-The surface owners. Their posture can resemble three different archetypes: a **publisher** selling attention on its own property; a **walled garden** controlling data, targeting, and measurement end to end; or a **new platform/marketplace** exposing APIs and protocols so third parties can transact against the surface.
+The surface owners. Their posture can resemble three archetypes:
 
-- **OpenAI** began testing ads in ChatGPT, emphasizing clear labeling, privacy protection, and that ads run on separate systems so advertisers cannot shape or rank ChatGPT's responses ("answer independence") [9][10]. It has also been reported to expose cost-per-click buying and a conversions pixel/API for advertisers [12][13].
-- **Google** is extending its existing ads stack into AI surfaces — ads in AI Overviews and AI Mode — where an ad can appear when it matches both the query and the AI answer's content [11][14].
+| Archetype | Posture |
+| --- | --- |
+| **Publisher** | Sells attention on its own property. |
+| **Walled garden** | Controls data, targeting, and measurement end to end. |
+| **New platform / marketplace** | Exposes APIs and protocols so third parties can transact against the surface. |
+
+How the two most prominent platforms are positioned:
+
+| Platform | Approach | Key points |
+| --- | --- | --- |
+| **OpenAI** | Testing ads in ChatGPT. | Clear labeling, privacy protection, and "answer independence" (ads on separate systems so advertisers cannot shape or rank responses) [9][10]; reported cost-per-click buying and a conversions pixel/API [12][13]. |
+| **Google** | Extending its existing ads stack into AI surfaces. | Ads in AI Overviews and AI Mode appear when they match both the query and the AI answer's content [11][14]. |
 
 ### 3.5 Standards Bodies
 Interoperability is being worked on in the open. The **IAB Tech Lab Agentic Advertising Initiative** (umbrella: AAMP, Agentic Advertising Management Protocols) aims to embed agent protocols with existing Tech Lab standards for buying and selling [1][2][6]. Its components are detailed in Section 5.5. Without shared standards each LLM becomes its own silo, which favors walled gardens over an open ecosystem.
@@ -146,28 +160,38 @@ The novel part is the "should we advertise at all?" gate and the tight coupling 
 To let different AI agents communicate across fragmented tech stacks without bespoke integrations, the industry relies on emerging protocols and standards.
 
 **The core protocols**
-- **MCP (Model Context Protocol)** — developed by Anthropic (Nov 2024), an open transport layer that lets AI assistants securely access external data sources and tools; advertising systems can use it to expose catalogs, offers, or ad decisioning as tools [3][4].
-- **AdCP (Ad Context Protocol)** — governed by AgenticAdvertising.org, an open semantic standard built on top of MCP. It translates buyer intent directly to seller agents at publishers, enabling direct, peer-to-peer "deal" negotiations that can bypass traditional programmatic middlemen [5][7][8].
-- **A2A (agent-to-agent) communication** — patterns for a buyer's agent and a seller's agent to negotiate directly, referenced within the IAB Tech Lab agentic work [1].
+
+| Protocol | Governed by | What it does |
+| --- | --- | --- |
+| **MCP** (Model Context Protocol) | Anthropic (Nov 2024) | Open transport layer letting AI assistants securely access external data/tools; advertising systems can expose catalogs, offers, or ad decisioning as tools [3][4]. |
+| **AdCP** (Ad Context Protocol) | AgenticAdvertising.org | Open semantic standard built on MCP; translates buyer intent to seller agents at publishers, enabling direct peer-to-peer "deal" negotiations that can bypass programmatic middlemen [5][7][8]. |
+| **A2A** (agent-to-agent) | Referenced in IAB Tech Lab agentic work | Patterns for a buyer's agent and a seller's agent to negotiate directly [1]. |
 
 **AAMP: the governance & policy framework (IAB Tech Lab)**
-AAMP (Agentic Advertising Management Protocols) is IAB Tech Lab's umbrella initiative for agentic advertising, powered by the same standards that run the ecosystem today. Per its official page (last updated Apr 23, 2026), AAMP is built on **three complementary pillars** — *Agentic Foundations* (high-performance delivery, execution, and control), *Agentic Protocols* (schemas, tools, and reference implementations for how buyer and seller agents discover and transact), and *Trust and Transparency* (a neutral Agent Registry) [28]. It builds on existing Tech Lab standards (OpenRTB, AdCOM, OpenDirect, Deals API) rather than replacing them, and treats Anthropic's MCP and Google's Agent-to-Agent as key agentic protocols [28]. Its components include:
-- **ARTF (Agentic Real Time Framework):** the Agentic Foundations pillar. ARTF defines container-based agent services deployed into a host platform's infrastructure to delegate bidstream processing "with minimal cost, latency and operational impacts," enabling *sub-millisecond* real-time bidding operations. The spec was in public comment until Jan 15, 2026, with v2.0 underway [29]. *(Note: earlier drafts of this atlas cited an "80-90% latency reduction"; IAB Tech Lab's spec states "minimal latency" and "sub-millisecond" RTB rather than a specific percentage, so that figure has been removed pending a primary source.)*
-- **Agentic Protocols & object models:** reference schemas for *Agentic Direct* (built on OpenDirect), *Agentic Deals* (the new Deals API for PMPs), and *Agentic Open Bidding* (OpenRTB), plus *Agentic Ad Objects* (AdCOM) [28].
-- **Buyer & Seller Agent SDKs:** production-ready reference SDKs published on GitHub, giving developers an executable baseline for multi-seller discovery, pricing negotiation, and transaction state management [30][31].
-- **Agentic Audiences (formerly User Context Protocol, UCP):** donated by LiveRamp (Nov 3, 2025) and launched by IAB Tech Lab (Jan 28, 2026). It defines how agents exchange audience signals as *embeddings* — compact learned vector representations that encode identity/intent at machine speed while preserving privacy and removing the need to sync large user-level datasets [32][33].
-- **Agent Registry:** the Trust and Transparency pillar; a neutral registry for agent accountability, available via the Tech Lab Tools Portal [28].
-- **Agentic Mobile & CoMP:** work on mobile app mediation/yield, plus the *LLM Content Monetization Protocols (CoMP)* working group, which lets publishers declare machine-readable usage rights and manage AI-bot access to their content [34]. *(Component names verified; specific mobile-spec attribution should be confirmed against primary sources.)*
-- **AI transparency / disclosure:** industry work on labeling AI-altered creative (e.g., consumer labels and C2PA-signed provenance metadata) is developing alongside AAMP. *(This atlas previously attributed a specific "AI Transparency & Disclosure Framework, launched Jan 2026" to AAMP; that specific framing was not confirmed on the AAMP page and should be verified before citing.)*
+AAMP (Agentic Advertising Management Protocols) is IAB Tech Lab's umbrella initiative for agentic advertising, powered by the same standards that run the ecosystem today. Per its official page (last updated Apr 23, 2026), AAMP is built on **three complementary pillars** — *Agentic Foundations* (high-performance delivery, execution, and control), *Agentic Protocols* (schemas, tools, and reference implementations for how buyer and seller agents discover and transact), and *Trust and Transparency* (a neutral Agent Registry) [28]. It builds on existing Tech Lab standards (OpenRTB, AdCOM, OpenDirect, Deals API) rather than replacing them, and treats Anthropic's MCP and Google's Agent-to-Agent as key agentic protocols [28]. Its components map to the three pillars as follows:
+
+| Component | Pillar | What it is |
+| --- | --- | --- |
+| **ARTF** (Agentic Real Time Framework) | Agentic Foundations | Container-based agent services deployed into a host platform to delegate bidstream processing "with minimal cost, latency and operational impacts," enabling *sub-millisecond* RTB. Spec was in public comment until Jan 15, 2026; v2.0 underway [29]. |
+| **Agentic Protocols & object models** | Agentic Protocols | Reference schemas: *Agentic Direct* (OpenDirect), *Agentic Deals* (Deals API for PMPs), *Agentic Open Bidding* (OpenRTB), plus *Agentic Ad Objects* (AdCOM) [28]. |
+| **Buyer & Seller Agent SDKs** | Agentic Protocols | Production-ready reference SDKs on GitHub for multi-seller discovery, pricing negotiation, and transaction state management [30][31]. |
+| **Agentic Audiences** (fka UCP) | Agentic Protocols | Donated by LiveRamp (Nov 3, 2025), launched Jan 28, 2026. Defines how agents exchange audience signals as *embeddings* — compact vector representations of identity/intent at machine speed while preserving privacy [32][33]. |
+| **Agent Registry** | Trust and Transparency | Neutral registry for agent accountability, via the Tech Lab Tools Portal [28]. |
+| **Agentic Mobile & CoMP** | Extended work | Mobile app mediation/yield, plus the *LLM Content Monetization Protocols (CoMP)* working group for machine-readable usage rights and AI-bot access control [34]. |
+
+*Notes on two claims from earlier drafts:* (1) an "80–90% latency reduction" once cited for ARTF is not supported by IAB Tech Lab's spec, which states "minimal latency" and "sub-millisecond" RTB rather than a specific percentage, so it has been removed pending a primary source; (2) a specific "AI Transparency & Disclosure Framework, launched Jan 2026" previously attributed to AAMP was not confirmed on the AAMP page. Separately, industry work on labeling AI-altered creative (e.g., consumer labels and C2PA-signed provenance metadata) is developing alongside AAMP but should be verified before citing. *(Component names verified against primary sources; specific mobile-spec attribution should be confirmed.)*
 
 ### 5.6 Decisioning: When and What to Show
 Placement becomes a ranking problem with an extra dimension. Beyond "which ad wins the auction," the system estimates the *cost to trust and usefulness* of interrupting, and may decline to show anything. Academic work explores auction design, disclosure, ad timing, and how ad insertion affects answer quality and user welfare — including generative-auction mechanisms and optimal-stopping approaches to *when* to insert an ad [22][25][26][27].
 
 ### 5.7 Economics & Pricing
-No single model has won. Candidates include:
-- **CPM (cost per mille)** — pay per thousand impressions; simple but a weak fit for a low-frequency, trust-sensitive surface. (Some direct placements, e.g. Perplexity's sponsored follow-ups, are reported to sell on a premium direct-CPM basis.)
-- **CPC (cost per click)** — familiar from search; OpenAI has been reported to turn on cost-per-click ads in ChatGPT, letting advertisers compare results against other channels [12].
-- **CPA / cost-per-conversion or cost-per-action** — pay for outcomes; a strong conceptual fit because the assistant can often observe task completion, supported by conversion pixels/APIs [13].
+No single model has won. The main candidates:
+
+| Model | Meaning | Fit for the LLM surface |
+| --- | --- | --- |
+| **CPM** (cost per mille) | Pay per thousand impressions. | Simple, but a weak fit for a low-frequency, trust-sensitive surface. Some direct placements (e.g., Perplexity sponsored follow-ups) reportedly sell on a premium direct-CPM basis. |
+| **CPC** (cost per click) | Pay per click. | Familiar from search; OpenAI reportedly turned on CPC ads in ChatGPT so advertisers can compare against other channels [12]. |
+| **CPA / cost-per-action** | Pay for conversions/outcomes. | Strong conceptual fit — the assistant can often observe task completion, supported by conversion pixels/APIs [13]. |
 
 The direction of travel favors outcome-based pricing, because it lets platforms show fewer, higher-quality ads while still monetizing.
 
@@ -208,9 +232,13 @@ The move into the agentic era has polarized the agency landscape. The difference
 Here an *agent* is software that can be given a goal ("acquire customers under a target CPA in these markets") and then plan, negotiate, execute, and optimize with limited step-by-step human instruction. Agents can operate on both sides: a buyer's agent seeking outcomes, a seller's agent maximizing yield [18][8].
 
 ### 7.2 Planning, Negotiation, Execution
-- **Planning:** translate business goals into audience, budget, and channel strategy [21].
-- **Negotiation:** buyer and seller agents settle price and terms directly, potentially in real time.
-- **Execution & optimization:** a buying agent can evaluate many inventory options simultaneously, build campaign structure, allocate budget, and adjust continuously against outcome signals [8].
+An agent's work spans three stages:
+
+| Stage | What the agent does |
+| --- | --- |
+| **Planning** | Translate business goals into audience, budget, and channel strategy [21]. |
+| **Negotiation** | Buyer and seller agents settle price and terms directly, potentially in real time. |
+| **Execution & optimization** | Evaluate many inventory options simultaneously, build campaign structure, allocate budget, and adjust continuously against outcome signals [8]. |
 
 ### 7.3 Interoperability & Standards
 For agents from different vendors to transact, they need shared rules: common ad protocols (AdCP, AAMP), agreed message formats, identity/authorization, and audit trails. Early cross-vendor test buys have already occurred — Magnite and MiQ completed one of the first AdCP test buys in December 2025, with Scope3 acting as the buyer agent [19]. Without such standards, agentic buying fragments into incompatible walled gardens [1][5].
@@ -277,22 +305,24 @@ When evaluating case studies, separate three things: (1) *engagement* (did users
 
 ## 10. Glossary
 
-- **LLM** — Large Language Model; the engine behind AI answer/chat surfaces.
-- **DSP / SSP** — Demand-Side / Supply-Side Platform; buy-side and sell-side AdTech.
-- **CPM / CPC / CPA** — pricing by impression / click / action (outcome).
-- **MCP** — Model Context Protocol; open standard connecting LLMs to external tools/data [3][4].
-- **MCP gateway** — an MCP server that exposes a programmatic ad platform's stack to external AI agents (e.g., Adform).
-- **AdCP** — Ad Context Protocol; open standard (built on MCP) for AI agents to plan, buy, and sell ads [5].
-- **AAMP** — Agentic Advertising Management Protocols; IAB Tech Lab's umbrella initiative built on three pillars (Foundations, Protocols, Trust) atop OpenRTB/AdCOM/OpenDirect/Deals API [6][28].
-- **ARTF** — Agentic Real Time Framework; AAMP's container-based, sub-millisecond bidding foundation [29].
-- **Agentic Audiences (fka UCP)** — LiveRamp-donated (Nov 2025) standard for privacy-safe audience signal exchange via vector embeddings [32][33].
-- **CoMP** — LLM Content Monetization Protocols; machine-readable publisher usage rights and AI-crawl controls [34].
-- **C2PA** — content provenance standard used for cryptographically signed AI-disclosure metadata.
-- **GEO / AEO** — Generative Engine Optimization / Answer Engine Optimization; being cited/sponsored within AI discovery.
-- **Buyer agent / Seller agent** — autonomous agents representing the demand and supply sides in a transaction.
-- **A2A** — agent-to-agent communication.
-- **Agentic advertising** — goal-driven software agents planning, negotiating, and executing ad buys [18].
-- **Contextual / conversational-intent targeting** — matching ads to inferred task/intent rather than literal keywords.
+| Term | Definition |
+| --- | --- |
+| **LLM** | Large Language Model; the engine behind AI answer/chat surfaces. |
+| **DSP / SSP** | Demand-Side / Supply-Side Platform; buy-side and sell-side AdTech. |
+| **CPM / CPC / CPA** | Pricing by impression / click / action (outcome). |
+| **MCP** | Model Context Protocol; open standard connecting LLMs to external tools/data [3][4]. |
+| **MCP gateway** | An MCP server that exposes a programmatic ad platform's stack to external AI agents (e.g., Adform). |
+| **AdCP** | Ad Context Protocol; open standard (built on MCP) for AI agents to plan, buy, and sell ads [5]. |
+| **AAMP** | Agentic Advertising Management Protocols; IAB Tech Lab's umbrella initiative built on three pillars (Foundations, Protocols, Trust) atop OpenRTB/AdCOM/OpenDirect/Deals API [6][28]. |
+| **ARTF** | Agentic Real Time Framework; AAMP's container-based, sub-millisecond bidding foundation [29]. |
+| **Agentic Audiences (fka UCP)** | LiveRamp-donated (Nov 2025) standard for privacy-safe audience signal exchange via vector embeddings [32][33]. |
+| **CoMP** | LLM Content Monetization Protocols; machine-readable publisher usage rights and AI-crawl controls [34]. |
+| **C2PA** | Content provenance standard used for cryptographically signed AI-disclosure metadata. |
+| **GEO / AEO** | Generative Engine Optimization / Answer Engine Optimization; being cited/sponsored within AI discovery. |
+| **Buyer agent / Seller agent** | Autonomous agents representing the demand and supply sides in a transaction. |
+| **A2A** | Agent-to-agent communication. |
+| **Agentic advertising** | Goal-driven software agents planning, negotiating, and executing ad buys [18]. |
+| **Contextual / conversational-intent targeting** | Matching ads to inferred task/intent rather than literal keywords. |
 
 ---
 
