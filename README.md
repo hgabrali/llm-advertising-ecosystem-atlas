@@ -51,7 +51,7 @@ This report separates three often-conflated groups. Media agencies own strategy,
 
 ## 3. The Ecosystem Map: Who Does What
 
-Think of four primary actor groups plus the standards bodies that let them interoperate.
+Think of four primary actor groups plus the standards bodies and infrastructure providers that let them interoperate.
 
 ### 3.1 Brands & Marketers
 The demand origin. They bring budgets, objectives, creative assets, and first-party data. The open strategic question for them is build vs. buy: run campaigns in-house against platform APIs, or delegate to an agency that abstracts the complexity.
@@ -71,9 +71,12 @@ The surface owners. Their posture can resemble three different archetypes: a **p
 - **Google** is extending its existing ads stack into AI surfaces — ads in AI Overviews and AI Mode — where an ad can appear when it matches both the query and the AI answer's content [11][14].
 
 ### 3.5 Standards Bodies
-Interoperability is being worked on in the open. The **IAB Tech Lab Agentic Advertising Initiative** (umbrella: AAMP, Agentic Advertising Management Protocols) aims to embed agent protocols with existing Tech Lab standards for buying and selling [1][2][6]. Without shared standards each LLM becomes its own silo, which favors walled gardens over an open ecosystem.
+Interoperability is being worked on in the open. The **IAB Tech Lab Agentic Advertising Initiative** (umbrella: AAMP, Agentic Advertising Management Protocols) aims to embed agent protocols with existing Tech Lab standards for buying and selling [1][2][6]. Its components are detailed in Section 5.5. Without shared standards each LLM becomes its own silo, which favors walled gardens over an open ecosystem.
 
-### 3.6 The Layered Architecture at a Glance
+### 3.6 New Infrastructure Players
+As autonomous buying moves from pilots into active execution, programmatic infrastructure providers are opening their stacks to agents. **Adform**, for example, has opened its full-stack suite (DSP, DMP, ad server, and identity) to autonomous AI systems by exposing its programmatic engine through a **Model Context Protocol (MCP) server**. Rather than forcing agencies through rigid manual UIs, this "MCP gateway" lets third-party AI agents (e.g., Claude or ChatGPT) connect directly to the platform core, so an agency's custom agent can execute omnichannel planning, forecasting, in-flight budget optimization, and end-to-end billing reconciliation via natural-language prompts [3][18]. *(Verify current product scope against Adform's primary documentation.)*
+
+### 3.7 The Layered Architecture at a Glance
 The ecosystem is a multi-layered architecture where strategy, software coordination, and conversational delivery intersect:
 
 ```text
@@ -103,7 +106,7 @@ Many brands are absorbing routine media execution by using generative AI interna
 ### 4.2 Media Agencies (Traditional, Holding Groups, and AI-Native)
 Rather than facing obsolescence, agencies are shifting toward strategic orchestration and system design.
 - **Enterprise holding networks:** Networks like Omnicom (via **Omni**) and WPP Media (via **WPP Open**) have built dedicated proprietary AI operating systems. Reporting describes holding groups executing live buys with agent-to-agent frameworks intended to shorten the media supply chain and reduce reliance on traditional ad-tech fees [15][16][17].
-- **Specialized AI-native boutiques:** A newer class of agencies focuses on Generative Engine Optimization (GEO), Answer Engine Optimization (AEO), and native LLM conversational campaigns, so brands are both cited organically and sponsored effectively within AI discovery environments. *(Emerging category; verify specific vendor names and claims against primary sources.)*
+- **Specialized AI-native boutiques:** A newer class of agencies focuses on Generative Engine Optimization (GEO), Answer Engine Optimization (AEO), and native LLM conversational campaigns, so brands are both cited organically and sponsored effectively within AI discovery environments. See the comparison in Section 6.4. *(Emerging category; verify specific vendor names and claims against primary sources.)*
 
 ### 4.3 AI Agents & AdTech Platforms (the execution engines)
 The entities physically completing the transaction loop are autonomous AI agents connected to ad-platform APIs. Such platforms continuously perceive performance signals, adjust bids, reallocate budget across channels, and pause fatigued creatives around the clock inside human-defined guardrails [18][8][21]. *(Specific product names in this fast-moving category should be verified against primary sources before citing.)*
@@ -140,11 +143,20 @@ User turn
 The novel part is the "should we advertise at all?" gate and the tight coupling between the ad server/DSP and the model's generation step, rather than a separate page-render pipeline [22][25].
 
 ### 5.5 The Protocol & Standard Layer (the language)
-To let different AI agents communicate across fragmented tech stacks without bespoke integrations, the industry relies on emerging protocols:
+To let different AI agents communicate across fragmented tech stacks without bespoke integrations, the industry relies on emerging protocols and standards.
+
+**The core protocols**
 - **MCP (Model Context Protocol)** — developed by Anthropic (Nov 2024), an open transport layer that lets AI assistants securely access external data sources and tools; advertising systems can use it to expose catalogs, offers, or ad decisioning as tools [3][4].
 - **AdCP (Ad Context Protocol)** — governed by AgenticAdvertising.org, an open semantic standard built on top of MCP. It translates buyer intent directly to seller agents at publishers, enabling direct, peer-to-peer "deal" negotiations that can bypass traditional programmatic middlemen [5][7][8].
-- **AAMP (Agentic Advertising Management Protocols)** — organized by the IAB Tech Lab as the broader administrative and policy framework. It "agentifies" existing standards (OpenRTB, AdCOM, OpenDirect) to govern low-latency bidding execution (via ARTF), register verified agents (Agent Registry), and exchange privacy-safe targeting signals via vector embeddings (Agentic Audiences / UCP) [1][2][6].
-- **Agent-to-agent (A2A) communication** — patterns for a buyer's agent and a seller's agent to negotiate directly, referenced within the IAB Tech Lab agentic work [1].
+- **A2A (agent-to-agent) communication** — patterns for a buyer's agent and a seller's agent to negotiate directly, referenced within the IAB Tech Lab agentic work [1].
+
+**AAMP: the governance & policy framework (IAB Tech Lab)**
+AAMP (Agentic Advertising Management Protocols) does not replace the existing programmatic stack; it "agentifies" globally adopted standards (OpenRTB, AdCOM, OpenDirect) so agents operate with repeatable, deterministic accuracy [1][2][6]. Its foundational components include:
+- **Agentic Real-Time Framework (ARTF):** the high-performance control plane defining how autonomous agents safely execute bidding logic inside real-time, containerized bidding environments — reported to cut transaction latency by roughly 80-90% [1][6].
+- **Agentic Audiences (User Context Protocol, donated by LiveRamp):** defines how agents securely exchange real-time consumer intent and behavioral signals as high-dimensional vector embeddings (numerical arrays of ~256-1024 dimensions). Encoding signals mathematically preserves privacy and removes the need to sync massive user-level datasets [1][6].
+- **Buyer & Seller Agent SDKs:** production-ready SDKs published on GitHub, giving developers a standardized, executable baseline for multi-seller discovery, automated pricing negotiation, and transaction state management [1][6].
+- **Agentic Mobile & CoMP:** standardizes mobile app mediation and yield testing (via the CloudX-donated Agentic Mobile spec), while the Content Monetization Protocols (CoMP) let publishers declare machine-readable usage rights, manage AI bot crawling, and verify monetization for their content [1][6].
+- **AI Transparency & Disclosure Framework (launched Jan 2026):** a risk-based compliance model requiring advertisers to visibly disclose generative AI use (via consumer-facing labels and cryptographically signed C2PA metadata) when AI materially alters realism, synthetic voices, or digital twins in ways that could mislead consumers — while exempting minor, routine post-production edits [1][2].
 
 ### 5.6 Decisioning: When and What to Show
 Placement becomes a ranking problem with an extra dimension. Beyond "which ad wins the auction," the system estimates the *cost to trust and usefulness* of interrupting, and may decline to show anything. Academic work explores auction design, disclosure, ad timing, and how ad insertion affects answer quality and user welfare — including generative-auction mechanisms and optimal-stopping approaches to *when* to insert an ad [22][25][26][27].
@@ -173,6 +185,19 @@ Agencies blend both: proprietary layers for data, identity, and orchestration; t
 ### 6.3 The Changing Job of the Media Buyer
 The classic "trader" role shifts from tactical button-pushing toward strategy, prompt/agent supervision, quality control, and interpreting outcomes. Tools like a "planning agent" can turn a single conversational prompt into a media plan in minutes, moving human expertise up the stack: setting objectives and guardrails, auditing what agents do, and owning client trust [21].
 
+### 6.4 Traditional vs. AI-Native Agencies
+The move into the agentic era has polarized the agency landscape. The difference between a traditional media agency and an AI-native one is less about software adoption than a rewrite of the operating model itself [16][18].
+
+| Operational dimension | Traditional media agency | AI-native media agency (e.g., GEO/AEO boutiques) |
+| --- | --- | --- |
+| **Operating strategy** | AI is an add-on productivity tool to accelerate manual tasks (e.g., drafting copy variants); core strategy stays human-led. | AI is core infrastructure; the operating model is rebuilt around AI as a discovery environment, research layer, and optimization engine. |
+| **Core services** | Traditional channel planning and buying (SEO, paid social, search, programmatic display), optimized after demand appears. | Generative Engine Optimization (GEO) and Answer Engine Optimization (AEO) to shape how brands are discovered, cited, and recommended in conversational environments. |
+| **Campaign pacing** | Periodic manual optimizations, weekly reporting cycles, static setup. | Continuous 24/7 algorithmic bidding, real-time budget routing, autonomous pacing. |
+| **Creative iteration** | Manual copy and design; slow, resource-intensive testing. | AI pipelines for high-velocity programmatic creative variants, automated localization, and compliance testing. |
+| **Performance metrics** | On-platform "vanity" metrics: impressions, clicks, CTR, legacy CPC. | Downstream "outcome architecture": business outcomes, pipeline value, and citation frequency. |
+
+*Vendor names for the AI-native category are an emerging, fast-moving space; verify specific firms and claims against primary sources.*
+
 ---
 
 ## 7. The Agentic Future
@@ -189,7 +214,7 @@ Here an *agent* is software that can be given a goal ("acquire customers under a
 For agents from different vendors to transact, they need shared rules: common ad protocols (AdCP, AAMP), agreed message formats, identity/authorization, and audit trails. Early cross-vendor test buys have already occurred — Magnite and MiQ completed one of the first AdCP test buys in December 2025, with Scope3 acting as the buyer agent [19]. Without such standards, agentic buying fragments into incompatible walled gardens [1][5].
 
 ### 7.4 Governance
-Agentic buying raises new questions: who is accountable when an agent misbehaves, how brand-safety rules are enforced at machine speed, how collusion between buyer/seller agents is prevented, and how humans stay meaningfully in the loop. Expect guardrails, spend caps, and human sign-off gates to be first-class features, not afterthoughts [1][18].
+Agentic buying raises new questions: who is accountable when an agent misbehaves, how brand-safety rules are enforced at machine speed, how collusion between buyer/seller agents is prevented, and how humans stay meaningfully in the loop. Expect guardrails, spend caps, human sign-off gates, verified-agent registries, and AI-disclosure requirements to be first-class features, not afterthoughts [1][2][18].
 
 ---
 
@@ -216,10 +241,10 @@ When evaluating case studies, separate three things: (1) *engagement* (did users
 
 - **Trust vs. monetization:** the core tension. Over-advertising can destroy the advisor relationship that makes assistants valuable [10][24].
 - **Answer integrity:** research warns that conflicting incentives could change how an LLM interacts with users when ads are present; answer independence and labeling are mitigations [10][24].
-- **Disclosure & regulation:** how must sponsored content be labeled inside a synthesized answer? Expect regulatory attention on deception and native-ad blurring.
+- **Disclosure & regulation:** how must sponsored and AI-altered content be labeled inside a synthesized answer? Frameworks like AAMP's AI Transparency & Disclosure model (C2PA-signed metadata, consumer labels) point one way [1][2].
 - **Measurement legitimacy:** who verifies conversions and prevents self-marking by walled gardens?
-- **Data & privacy:** conversational intent is deeply personal; targeting on it (including via vector-embedding audiences) invites scrutiny [9].
-- **Market structure:** does the value chain consolidate into a few walled gardens, or do open protocols (AdCP/AAMP) keep it competitive? [1][5]
+- **Data & privacy:** conversational intent is deeply personal; targeting on it (including via vector-embedding audiences such as Agentic Audiences/UCP) invites scrutiny [1][9].
+- **Market structure:** does the value chain consolidate into a few walled gardens, or do open protocols (AdCP/AAMP) and open infrastructure (e.g., MCP gateways) keep it competitive? [1][3][5]
 
 ---
 
@@ -229,9 +254,13 @@ When evaluating case studies, separate three things: (1) *engagement* (did users
 - **DSP / SSP** — Demand-Side / Supply-Side Platform; buy-side and sell-side AdTech.
 - **CPM / CPC / CPA** — pricing by impression / click / action (outcome).
 - **MCP** — Model Context Protocol; open standard connecting LLMs to external tools/data [3][4].
+- **MCP gateway** — an MCP server that exposes a programmatic ad platform's stack to external AI agents (e.g., Adform).
 - **AdCP** — Ad Context Protocol; open standard (built on MCP) for AI agents to plan, buy, and sell ads [5].
 - **AAMP** — Agentic Advertising Management Protocols; IAB Tech Lab's umbrella framework agentifying OpenRTB/AdCOM/OpenDirect [6].
-- **ARTF / Agent Registry / Agentic Audiences (UCP)** — AAMP components for low-latency bidding, verified-agent registration, and privacy-safe signal exchange.
+- **ARTF** — Agentic Real-Time Framework; AAMP's low-latency bidding control plane.
+- **Agentic Audiences (UCP)** — LiveRamp-donated User Context Protocol; privacy-safe signal exchange via vector embeddings.
+- **CoMP** — Content Monetization Protocols; machine-readable publisher usage rights and AI-crawl controls.
+- **C2PA** — content provenance standard used for cryptographically signed AI-disclosure metadata.
 - **GEO / AEO** — Generative Engine Optimization / Answer Engine Optimization; being cited/sponsored within AI discovery.
 - **Buyer agent / Seller agent** — autonomous agents representing the demand and supply sides in a transaction.
 - **A2A** — agent-to-agent communication.
